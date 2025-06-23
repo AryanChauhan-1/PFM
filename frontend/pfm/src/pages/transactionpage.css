@@ -1,0 +1,252 @@
+.transactions-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+.transactions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.transactions-header h2 {
+  font-size: 1.8rem;
+  color: var(--text-light);
+  margin: 0;
+}
+
+.transactions-header .back-icon,
+.transactions-header .search-icon {
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 5px; /* Make clickable area larger */
+}
+
+.transactions-header .back-icon {
+  margin-right: auto; /* Push search icon to the right */
+}
+
+.controls-bar {
+  display: flex;
+  justify-content: flex-end; /* Align buttons to the right */
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.filter-button,
+.add-new-button {
+  background-color: var(--card-bg); /* Use card background for these buttons */
+  color: var(--text-light);
+  border: 1px solid var(--border-color);
+  border-radius: 8px; /* Slightly less rounded than main buttons */
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.filter-button:hover,
+.add-new-button:hover {
+  background-color: var(--border-color);
+  border-color: var(--accent-aqua);
+}
+
+/* Add Transaction Form Section */
+.add-transaction-form-section {
+  background-color: var(--card-bg);
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.add-transaction-form-section h3 {
+  color: var(--text-light);
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.add-transaction-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.add-transaction-form .form-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.add-transaction-form .form-row .input-group {
+  flex: 1; /* Distribute space evenly */
+  min-width: 200px; /* Minimum width for each input */
+}
+
+/* Reuse input-group styles from general index.css or LoginPage.css */
+/* Ensure label and icon floating works well with this form too */
+
+.add-transaction-form button {
+  width: 100%;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Transactions List Section */
+.transactions-list-section {
+  background-color: var(--card-bg);
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 25px; /* Space before bottom nav */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  flex-grow: 1; /* Allow it to take up remaining vertical space */
+}
+
+.transactions-list-section h3 {
+  color: var(--text-light);
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.transactions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Transaction Item styles are largely reused from DashboardPage.css */
+.transaction-item {
+  display: flex;
+  align-items: center;
+  background-color: var(--primary-bg-dark);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.transaction-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--border-color);
+  color: var(--text-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  margin-right: 15px;
+}
+
+.transaction-details {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.transaction-name {
+  font-weight: bold;
+  color: var(--text-light);
+  margin: 0 0 5px 0;
+}
+
+.transaction-date {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.transaction-amount {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.transaction-amount.expense {
+  color: var(--danger-color);
+}
+
+.transaction-amount.income {
+  color: var(--success-color);
+}
+
+.no-transactions {
+  text-align: center;
+  color: var(--text-muted);
+  font-style: italic;
+  padding: 20px;
+}
+
+/* Bottom Navigation Bar is assumed to be shared or copied from DashboardPage.css */
+/* If you make it a component, you'd import it. */
+.bottom-nav { /* Ensure these styles are present if not a separate component */
+  background-color: var(--card-bg);
+  border-top: 1px solid var(--border-color);
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  border-radius: 15px 15px 0 0;
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+  margin-top: auto;
+  width: 100%;
+  z-index: 1000; /* Ensure it stays on top */
+}
+
+.bottom-nav .nav-item {
+  color: var(--text-muted);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.8rem;
+  padding: 5px 10px;
+  transition: color 0.3s ease;
+}
+
+.bottom-nav .nav-item.active {
+  color: var(--accent-aqua);
+}
+
+.bottom-nav .nav-item:hover {
+  color: var(--accent-aqua);
+}
+
+.bottom-nav .nav-item.add-button {
+  background-color: var(--accent-aqua);
+  color: var(--primary-bg-dark);
+  font-size: 2rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: -20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.bottom-nav .nav-item.add-button:hover {
+  background-color: #00e5ff;
+}
+
+/* Adjustments for desktop view */
+@media (min-width: 768px) {
+  .transactions-container {
+    padding: 30px 50px;
+  }
+  .add-transaction-form .form-row {
+    flex-wrap: nowrap; /* Keep rows on one line on desktop */
+  }
+}

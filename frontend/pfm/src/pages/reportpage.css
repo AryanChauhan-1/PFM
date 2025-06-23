@@ -1,0 +1,216 @@
+.reports-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+.reports-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.reports-header h2 {
+  font-size: 1.8rem;
+  color: var(--text-light);
+  margin: 0;
+  flex-grow: 1; /* Allow title to take up space */
+  text-align: center;
+}
+
+.reports-header .back-icon,
+.reports-header .export-icon {
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 5px;
+}
+.reports-header .back-icon {
+    margin-right: auto;
+}
+.reports-header .export-icon {
+    margin-left: auto;
+}
+
+/* Report Card Styling */
+.report-card {
+  background-color: var(--card-bg);
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.report-card h3 {
+  color: var(--text-light);
+  margin-top: 0;
+  margin-bottom: 25px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.report-description {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  text-align: center;
+  margin-top: 25px;
+}
+
+.error-message {
+  color: var(--danger-color);
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* Chart Placeholder Styling */
+.chart-placeholder {
+  width: 100%;
+  height: 250px; /* Consistent height for charts */
+  background-color: var(--primary-bg-dark);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-muted);
+  font-size: 1.2rem;
+  overflow: hidden; /* Ensure image fits */
+}
+
+.chart-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Specific styling for category report content */
+.category-report-content {
+  display: flex;
+  flex-direction: column; /* Stack on small screens */
+  gap: 20px;
+  align-items: center;
+}
+
+.category-list {
+  width: 100%;
+  max-width: 300px; /* Constrain width of list next to pie chart */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.category-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.category-item:last-child {
+  border-bottom: none;
+}
+
+.category-name {
+  color: var(--text-light);
+  font-weight: bold;
+}
+
+.category-amount, .category-percentage {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.pie-chart {
+  width: 250px; /* Size of the pie chart placeholder */
+  height: 250px;
+  border-radius: 50%;
+  border: 5px solid var(--accent-aqua); /* Accent border */
+  flex-shrink: 0; /* Don't shrink when space is tight */
+}
+
+.no-data {
+  text-align: center;
+  color: var(--text-muted);
+  font-style: italic;
+  padding: 20px;
+}
+
+
+/* Bottom Navigation Bar (reused from DashboardPage.css) */
+.bottom-nav {
+  background-color: var(--card-bg);
+  border-top: 1px solid var(--border-color);
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+  border-radius: 15px 15px 0 0;
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+  margin-top: auto;
+  width: 100%;
+  z-index: 1000;
+}
+
+.bottom-nav .nav-item {
+  color: var(--text-muted);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.8rem;
+  padding: 5px 10px;
+  transition: color 0.3s ease;
+}
+
+.bottom-nav .nav-item.active {
+  color: var(--accent-aqua);
+}
+
+.bottom-nav .nav-item:hover {
+  color: var(--accent-aqua);
+}
+
+.bottom-nav .nav-item.add-button {
+  background-color: var(--accent-aqua);
+  color: var(--primary-bg-dark);
+  font-size: 2rem;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: -20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.bottom-nav .nav-item.add-button:hover {
+  background-color: #00e5ff;
+}
+
+/* Adjustments for desktop view */
+@media (min-width: 768px) {
+  .reports-container {
+    padding: 30px 50px;
+  }
+  .category-report-content {
+    flex-direction: row; /* Display side-by-side on larger screens */
+    justify-content: space-around;
+  }
+  .category-list {
+    max-width: 400px; /* Give more width to the list on desktop */
+  }
+  .pie-chart {
+    width: 300px; /* Slightly larger on desktop */
+    height: 300px;
+  }
+}
