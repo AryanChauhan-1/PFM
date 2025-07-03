@@ -1,0 +1,1 @@
+This project is about building a personal finance manager app that helps people track their money, set budgets, and understand their spending habits. Think of it like a digital notebook for all your financial ins and outs, but with smart features to give you insights.
