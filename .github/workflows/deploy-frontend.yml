@@ -14,25 +14,25 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        # Add working-directory if your entire repo is inside a subfolder,
-        # e.g., if your repo is 'my-project' and your code is in 'my-project/pf_manager'
-        # working-directory: pf_manager/ # Uncomment and adjust if needed
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          # CRUCIAL FIX: Tell setup-node where to find the package-lock.json
+          cache: 'npm' # Specify the package manager for caching
+          cache-dependency-path: frontend/package-lock.json # <--- ADD THIS LINE
 
       - name: Install dependencies and Build React App
         run: |
-          npm ci # Install dependencies
-          npm run build # Build the app
-        working-directory: frontend/ # <--- CRUCIAL: Run these commands from the 'frontend' directory
+          npm ci
+          npm run build
+        working-directory: frontend/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./frontend/build # Path to the build output relative to the repo root
+          publish_dir: ./frontend/build
           publish_branch: gh-pages
           enable_jekyll: false
