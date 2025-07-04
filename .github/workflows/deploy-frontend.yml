@@ -1,40 +1,38 @@
-        name: Deploy React Frontend to GitHub Pages
+name: Deploy React Frontend to GitHub Pages
 
-        on:
-          push:
-            branches:
-              - main
+on:
+  push:
+    branches:
+      - main
 
-          workflow_dispatch:
+  workflow_dispatch:
 
-        jobs:
-          build-and-deploy:
-            runs-on: ubuntu-latest
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
 
-            steps:
-              - name: Checkout code
-                uses: actions/checkout@v4
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        # Add working-directory if your entire repo is inside a subfolder,
+        # e.g., if your repo is 'my-project' and your code is in 'my-project/pf_manager'
+        # working-directory: pf_manager/ # Uncomment and adjust if needed
 
-              - name: Set up Node.js
-                uses: actions/setup-node@v4
-                with:
-                  node-version: '20'
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-              - name: Navigate to frontend directory and install dependencies
-                run: |
-                  cd frontend/
-                  npm ci
+      - name: Install dependencies and Build React App
+        run: |
+          npm ci # Install dependencies
+          npm run build # Build the app
+        working-directory: frontend/ # <--- CRUCIAL: Run these commands from the 'frontend' directory
 
-              - name: Build React App
-                run: |
-                  cd frontend/
-                  npm run build
-
-              - name: Deploy to GitHub Pages
-                uses: peaceiris/actions-gh-pages@v4
-                with:
-                  github_token: ${{ secrets.GITHUB_TOKEN }}
-                  publish_dir: ./frontend/build
-                  publish_branch: gh-pages
-                  enable_jekyll: false
-        
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./frontend/build # Path to the build output relative to the repo root
+          publish_branch: gh-pages
+          enable_jekyll: false
