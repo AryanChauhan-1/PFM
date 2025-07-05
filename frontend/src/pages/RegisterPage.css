@@ -1,0 +1,64 @@
+/* Reuse most styles from LoginPage.css for consistency */
+.register-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.register-card {
+  background-color: var(--card-bg);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+.register-card h2 {
+  color: var(--text-light);
+  margin-bottom: 30px;
+  font-size: 2em;
+}
+
+/* Input group styles are shared from index.css or copied from LoginPage.css if not shared */
+.input-group {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+/* Input field styles are shared from index.css */
+/* Labels and icons interaction for input fields are shared from LoginPage.css */
+
+.register-card button {
+  width: 100%;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.link {
+  color: var(--accent-aqua);
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-top: 15px;
+  display: block;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.login-text {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 20px;
+}
+
+.error-message {
+  color: var(--danger-color);
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+}
